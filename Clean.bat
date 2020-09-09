@@ -20,6 +20,7 @@ for /d /r . %%d in (Intermediate Saved Binaries) do @if exist "%%d" echo "Removi
 rmdir /S /Q Binaries
 rmdir /S /Q Intermediate
 rmdir /S /Q Saved
+rmdir /S /Q Build
 
 rmdir /S /Q Plugins\Match3\Binaries
 rmdir /S /Q Plugins\Match3\Intermediate
