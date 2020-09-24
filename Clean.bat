@@ -15,18 +15,16 @@ set UE4DIR=.\Tourist3D
 
 cd %UE4DIR%
 
-for /d /r . %%d in (Intermediate Saved Binaries) do @if exist "%%d" echo "Removing %%d" && rd /s/q "%%d"
+echo [Removing from Plugins]
+for /d /r ./Plugins %%d in (Binaries Intermediate Saved) do @if exist "%%d" echo "Removing %%d" && rd /s/q "%%d"
+::rmdir /S /Q Content\Developers
+::rmdir /S /Q Content\Collections 
 
+echo [Removing from Root]
 rmdir /S /Q Binaries
 rmdir /S /Q Intermediate
-rmdir /S /Q Saved
 rmdir /S /Q Build
-
-rmdir /S /Q Plugins\Match3\Binaries
-rmdir /S /Q Plugins\Match3\Intermediate
-rmdir /S /Q Content\Developers
-rmdir /S /Q Content\Collections 
-rmdir /S /Q Saved\Logs
+rmdir /S /Q Saved
 
 rmdir /S /Q cmake-build-debug
 del /F /Q CMakeLists.txt
