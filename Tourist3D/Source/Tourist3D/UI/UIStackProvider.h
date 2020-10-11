@@ -17,10 +17,13 @@ public:
 	AUIStackProvider();
 
 	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
-	void AddWidgetToStack(UUserWidget* Widget, bool ReplaceSame = false);
+	void PushWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead = false);
 
 	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
-	void RemoveWidgetFromStack();
+	void PushUniqueWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead = false);
+
+	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
+	void PopWidgetFromStack();
 
 	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
 	void PrintWidgetsStack();
