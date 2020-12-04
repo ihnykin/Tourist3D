@@ -26,6 +26,9 @@ public:
 	void PopWidgetFromStack();
 
 	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
+	void ClearStack();
+
+	UFUNCTION(BlueprintCallable, Category = "UI Stack Provider")
 	void PrintWidgetsStack();
 
 	UPROPERTY(BlueprintReadOnly, Category = "UI Stack Provider")

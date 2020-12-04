@@ -69,6 +69,14 @@ void AUIStackProvider::PopWidgetFromStack()
 	WidgetsStack.SetNum(WidgetsStack.Num() - 1);
 }
 
+void AUIStackProvider::ClearStack()
+{
+	while (WidgetsStack.Num() > 0)
+	{
+		PopWidgetFromStack();
+	}
+}
+
 void AUIStackProvider::PrintWidgetsStack()
 {
 	FString Result = TEXT("UIStackProvider: []");
