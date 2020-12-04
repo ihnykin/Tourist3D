@@ -16,4 +16,7 @@ class TOURIST3D_API UCommonUtils : public UObject
 
     UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Common Utils")
     static bool IsDebugBuild();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Common Utils")
+	static FString NameArrayToString(const TArray<FName>& StringArray, bool InRelease);
 };
