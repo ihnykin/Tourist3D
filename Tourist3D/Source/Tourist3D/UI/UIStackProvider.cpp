@@ -11,7 +11,7 @@ AUIStackProvider::AUIStackProvider()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void AUIStackProvider::PushWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead)
+UUserWidget* AUIStackProvider::PushWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead)
 {
 	// Remove or show widget with the same class
 	if (WidgetsStack.Num() > 0 && WidgetsStack.Last()->GetClass() == Widget->GetClass())
@@ -20,7 +20,7 @@ void AUIStackProvider::PushWidgetToStack(UUserWidget* Widget, bool ReplaceSameHe
 		{
 			if (!WidgetsStack.Last()->IsInViewport())
 				WidgetsStack.Last()->AddToViewport();
-			return;
+			return WidgetsStack.Last();
 		}
 
 		PopWidgetFromStack();
@@ -28,9 +28,10 @@ void AUIStackProvider::PushWidgetToStack(UUserWidget* Widget, bool ReplaceSameHe
 
 	Widget->AddToViewport();
 	WidgetsStack.Add(Widget);
+	return Widget;
 }
 
-void AUIStackProvider::PushUniqueWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead)
+UUserWidget* AUIStackProvider::PushUniqueWidgetToStack(UUserWidget* Widget, bool ReplaceSameHead)
 {
 	int32 FoundIdx = INDEX_NONE;
 	for (int32 Idx = WidgetsStack.Num() - 1; Idx >= 0; Idx--)
@@ -54,7 +55,7 @@ void AUIStackProvider::PushUniqueWidgetToStack(UUserWidget* Widget, bool Replace
 		}
 	}
 
-	PushWidgetToStack(Widget, ReplaceSameHead);
+	return PushWidgetToStack(Widget, ReplaceSameHead);
 }
 
 void AUIStackProvider::PopWidgetFromStack()
